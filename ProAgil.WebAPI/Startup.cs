@@ -31,6 +31,9 @@ namespace ProAgil.WebAPI
                 x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
             );
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            // Adicona permição para requisição cruzada (Access-Control-Allow-Origin)
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +50,9 @@ namespace ProAgil.WebAPI
             }
 
             //app.UseHttpsRedirection();
+
+            // Adiciona permiçao para requisiçao cruzada (Access-Control-Allow-Origin)
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseMvc();
         }
     }
