@@ -53,6 +53,7 @@ namespace ProAgil.WebAPI
 
             // Adiciona permiçao para requisiçao cruzada (Access-Control-Allow-Origin)
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseStaticFiles(); // Para disponibilizar imagens contindas na pasta wwwroot
             app.UseMvc();
         }
     }
