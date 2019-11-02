@@ -1,9 +1,13 @@
-<form class="form-inline" action="">
+<div class="form-inline" action="">
   <div class="form-group mb-2">
-    <input type="text" class="form-control mr-2" placeholder="Buscar">
+    <input 
+      type="text" 
+      class="form-control mr-2" 
+      placeholder="Buscar" 
+      [(ngModel)]="filtroLista">
     <button class="btn btn-outline-success">Buscar</button>
   </div>
-</form>
+</div>
 <table class="table table-striped">
   <thead class="thead-dark">
     <tr>
@@ -34,7 +38,7 @@
       <td>{{evento.local}}</td>
       <td>{{evento.data}}</td>
       <td>{{evento.qtdPessoas}}</td>
-      <td>{{evento.lote}}</td>
+      <td>{{evento.lote | uppercase}}</td>
       <td>
         <button class="btn btn-success"></button>
         <button class="btn btn-danger"></button>
