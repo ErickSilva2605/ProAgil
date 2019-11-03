@@ -5,7 +5,7 @@ namespace ProAgil.Repository
 {
     public interface IProAgilRepository
     {
-        // Geral
+        // GERAL
          void Add<T>(T entity) where T : class;
          void Update<T>(T entity) where T : class;
          void Delete<T>(T entity) where T : class;
@@ -18,6 +18,6 @@ namespace ProAgil.Repository
 
          // PALESTRANTES
          Task<Palestrante[]> GetAllPalestrantesByNameAsync(string name, bool includeEventos);
-        Task<Palestrante> GetPalestranteAsync(int PalestranteId, bool includeEventos);
+         Task<Palestrante> GetPalestranteAsync(int palestranteId, bool includeEventos);
     }
 }
