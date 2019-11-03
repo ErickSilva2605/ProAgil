@@ -53,7 +53,7 @@ namespace ProAgil.Repository.Migrations
                     Preco = table.Column<double>(nullable: false),
                     DataInicio = table.Column<DateTime>(nullable: true),
                     DataFim = table.Column<DateTime>(nullable: true),
-                    Quantidade = table.Column<string>(nullable: true),
+                    Quantidade = table.Column<int>(nullable: false),
                     EventoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

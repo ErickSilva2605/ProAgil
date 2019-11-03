@@ -55,7 +55,7 @@ namespace ProAgil.Repository.Migrations
 
                     b.Property<double>("Preco");
 
-                    b.Property<string>("Quantidade");
+                    b.Property<int>("Quantidade");
 
                     b.HasKey("Id");
 
@@ -121,7 +121,7 @@ namespace ProAgil.Repository.Migrations
 
             modelBuilder.Entity("ProAgil.Domain.Lote", b =>
                 {
-                    b.HasOne("ProAgil.Domain.Evento", "Evento")
+                    b.HasOne("ProAgil.Domain.Evento")
                         .WithMany("Lotes")
                         .HasForeignKey("EventoId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -142,7 +142,7 @@ namespace ProAgil.Repository.Migrations
 
             modelBuilder.Entity("ProAgil.Domain.RedeSocial", b =>
                 {
-                    b.HasOne("ProAgil.Domain.Evento", "Evento")
+                    b.HasOne("ProAgil.Domain.Evento")
                         .WithMany("RedeSociais")
                         .HasForeignKey("EventoId");
 
