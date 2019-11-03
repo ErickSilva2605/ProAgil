@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProAgil.Repository;
 
-namespace ProAgil.WebAPI.Controllers {
+namespace ProAgil.WebAPI.Controllers 
+{
     [Route ("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase {
+    public class ValuesController : ControllerBase 
+    {
         private readonly ProAgilContext _context;
         public ValuesController (ProAgilContext context) 
         {

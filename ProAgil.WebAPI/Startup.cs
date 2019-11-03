@@ -30,8 +30,8 @@ namespace ProAgil.WebAPI
             services.AddDbContext<ProAgilContext>(
                 x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
             );
+            services.AddScoped<IProAgilRepository, ProAgilRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
             // Adicona permição para requisição cruzada (Access-Control-Allow-Origin)
             services.AddCors();
         }
