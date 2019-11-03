@@ -11,6 +11,7 @@ namespace ProAgil.Repository
         public ProAgilRepository(ProAgilContext context)
         {
             _context = context;
+            _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking; // Para nao travar o EF nas consultas
         }
 
         // GERAL
@@ -45,7 +46,8 @@ namespace ProAgil.Repository
                     .ThenInclude(i => i.Palestrante);
             }
 
-            query = query.Where(w => w.Id == eventoId);
+            query = query.AsNoTracking()
+                .Where(w => w.Id == eventoId);
             
             return await query.FirstOrDefaultAsync();
         }
@@ -61,7 +63,8 @@ namespace ProAgil.Repository
                     .ThenInclude(i => i.Palestrante);
             }
 
-            query = query.OrderByDescending(o => o.Data);
+            query = query.AsNoTracking()
+                .OrderByDescending(o => o.Data);
             
             return await query.ToArrayAsync();
         }
@@ -77,7 +80,7 @@ namespace ProAgil.Repository
                     .ThenInclude(i => i.Palestrante);
             }
 
-            query = query
+            query = query.AsNoTracking()
                 .OrderByDescending(o => o.Data)
                 .Where(w => w.Tema.ToLower().Contains(tema.ToLower()));
             
@@ -96,7 +99,8 @@ namespace ProAgil.Repository
                     .ThenInclude(i => i.Evento);
             }
 
-            query = query.Where(w => w.Id == palestranteId);
+            query = query.AsNoTracking()
+                .Where(w => w.Id == palestranteId);
             
             return await query.FirstOrDefaultAsync();
         }
@@ -111,7 +115,8 @@ namespace ProAgil.Repository
                     .ThenInclude(i => i.Evento);
             }
 
-            query = query.Where(w => w.Nome.ToLower().Contains(name.ToLower()));
+            query = query.AsNoTracking()
+                .Where(w => w.Nome.ToLower().Contains(name.ToLower()));
             
             return await query.ToArrayAsync();
         }
