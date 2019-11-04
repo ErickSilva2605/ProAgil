@@ -8,12 +8,15 @@ import { AppComponent } from './app.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { HttpClient } from 'selenium-webdriver/http';
 import { NavComponent } from './nav/nav.component';
+import { DateTimeFormatPipe } from './_helps/DateTimeFormat.pipe';
+import { EventoService } from './_services/evento.service';
 
 @NgModule({
    declarations: [
       AppComponent,
       EventosComponent,
-      NavComponent
+      NavComponent,
+      DateTimeFormatPipe
    ],
    imports: [
       BrowserModule,
@@ -21,7 +24,9 @@ import { NavComponent } from './nav/nav.component';
       HttpClientModule,
       FormsModule
    ],
-   providers: [],
+   providers: [
+      EventoService
+   ],
    bootstrap: [
       AppComponent
    ]
