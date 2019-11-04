@@ -1,15 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
-
+import { FormsModule } from '@angular/forms';
+import { BsDropdownModule, TooltipModule, ModalModule } from 'ngx-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
+
+import { EventoService } from './_services/evento.service';
+
 import { AppComponent } from './app.component';
 import { EventosComponent } from './eventos/eventos.component';
-import { HttpClient } from 'selenium-webdriver/http';
 import { NavComponent } from './nav/nav.component';
+
 import { DateTimeFormatPipe } from './_helps/DateTimeFormat.pipe';
-import { EventoService } from './_services/evento.service';
 
 @NgModule({
    declarations: [
@@ -20,6 +22,9 @@ import { EventoService } from './_services/evento.service';
    ],
    imports: [
       BrowserModule,
+      BsDropdownModule.forRoot(),
+      TooltipModule.forRoot(),
+      ModalModule.forRoot(),
       AppRoutingModule,
       HttpClientModule,
       FormsModule

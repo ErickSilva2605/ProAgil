@@ -2,10 +2,10 @@
   <div class="form-group mb-2">
     <label class="mr-2">Filtro:</label>
     <input 
-      type="text" 
-      class="form-control mr-2" 
-      placeholder="Buscar" 
-      [(ngModel)]="filtroLista">
+    type="text" 
+    class="form-control mr-2" 
+    placeholder="Buscar" 
+    [(ngModel)]="filtroLista">
   </div>
 </div>
 <table class="table table-striped">
@@ -47,8 +47,14 @@
         </div>
       </td>
       <td>
-        <button class="btn btn-success"></button>
-        <button class="btn btn-danger"></button>
+        <div class="btn-group">
+          <button class="btn btn-sm btn-outline-success" tooltip="Editar" (click)="openModal(templateModal)">
+            <i class="fa fa-edit"></i>
+          </button>
+          <button class="btn btn-sm btn-outline-danger" tooltip="Excluir">
+            <i class="fa fa-eraser"></i>
+          </button>
+        </div>
       </td>
     </tr>
   </tbody>
@@ -62,3 +68,16 @@
     </tr>
   </tfoot>
 </table>
+
+<ng-template #templateModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" 
+    aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  This is a modal.
+</div>
+</ng-template>
