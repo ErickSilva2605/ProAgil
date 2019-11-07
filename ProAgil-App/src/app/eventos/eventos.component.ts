@@ -15,6 +15,7 @@ export class EventosComponent implements OnInit {
 
   // Variaveis
   eventos: Evento[];
+  evento: Evento;
   eventosFiltrados: Evento[];
   imagemLargura = 50;
   imagemMargem = 2;
@@ -46,6 +47,7 @@ export class EventosComponent implements OnInit {
   }
 
   openModal(template: any) {
+    this.registerForm.reset();
     template.show();
   }
 
@@ -57,7 +59,7 @@ export class EventosComponent implements OnInit {
     this.registerForm = this.fb.group({
       tema: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
       local: ['', Validators.required],
-      dataEvento: ['', Validators.required],
+      data: ['', Validators.required],
       imagemURL: ['', Validators.required],
       qtdPessoas: ['', [Validators.required, Validators.max(120000)]],
       telefone: ['', Validators.required],
@@ -65,8 +67,19 @@ export class EventosComponent implements OnInit {
     });
   }
 
-  salvarAlteracao() {
-
+  salvarAlteracao(template: any) {
+    if (this.registerForm.valid) {
+      this.evento = Object.assign({}, this.registerForm.value);
+      this.eventoService.postEvento(this.evento).subscribe(
+        (novoEvento: Evento) => {
+          console.log(novoEvento);
+          template.hide();
+          this.getEventos();
+        }, error => {
+          console.log(error);
+        }
+      );
+    }
   }
 
   filtrarEventos(filtrarPor: string): Evento[] {

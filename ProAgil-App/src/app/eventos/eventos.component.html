@@ -130,11 +130,11 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
     <input type="text" class="form-control"
     bsDatepicker
     [bsConfig]="{ dateInputFormat : 'DD/MM/YYYY hh:mm' }"
-    [ngClass]="{'is-invalid': registerForm.get('dataEvento').errors 
-    && registerForm.get('dataEvento').touched}"
-    formControlName="dataEvento" placeholder="">
-    <div *ngIf="registerForm.get('dataEvento').hasError('required')
-    && registerForm.get('dataEvento').touched"
+    [ngClass]="{'is-invalid': registerForm.get('data').errors 
+    && registerForm.get('data').touched}"
+    formControlName="data" placeholder="">
+    <div *ngIf="registerForm.get('data').hasError('required')
+    && registerForm.get('data').touched"
     class="invalid-feedback">
     Data e hora é obrigatório.
   </div>
@@ -207,7 +207,7 @@ Deve ser um e-mail válido.
   <button class="btn btn-secondary" (click)="templateModal.hide()">
     Fechar
   </button>
-  <button class="btn btn-primary ml-auto" [disabled]="!registerForm.valid" (click)="salvarAlteracao()">
+  <button class="btn btn-primary ml-auto" [disabled]="!registerForm.valid" (click)="salvarAlteracao(templateModal)">
     Salvar Alterações
   </button>
 </div>
