@@ -1,8 +1,11 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProAgil.Domain;
 using ProAgil.Repository;
+using ProAgil.WebAPI.Dtos;
 
 namespace ProAgil.WebAPI.Controllers
 {
@@ -11,8 +14,10 @@ namespace ProAgil.WebAPI.Controllers
     public class EventosController : ControllerBase
     {
         private readonly IProAgilRepository _repository;
-        public EventosController (IProAgilRepository repository) 
+        private readonly IMapper _mapper;
+        public EventosController (IProAgilRepository repository, IMapper mapper) 
         {
+            _mapper = mapper;
             _repository = repository;
         }
 
@@ -21,7 +26,10 @@ namespace ProAgil.WebAPI.Controllers
         {
             try
             {
-                var results = await _repository.GetAllEventosAsync(true);
+                var eventos = await _repository.GetAllEventosAsync(true);
+
+                var results = _mapper.Map<IEnumerable<EventoDto>>(eventos);
+
                 return Ok(results);
             }
             catch (System.Exception)
@@ -35,7 +43,10 @@ namespace ProAgil.WebAPI.Controllers
         {
             try
             {
-                var result = await _repository.GetEventoByIdAsync(eventoId, true);
+                var evento = await _repository.GetEventoByIdAsync(eventoId, true);
+
+                var result = _mapper.Map<EventoDto>(evento);
+
                 return Ok(result);
             }
             catch (System.Exception)
