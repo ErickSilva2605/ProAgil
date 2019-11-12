@@ -45,7 +45,7 @@
       <td>{{evento.id}}</td>
       <td>{{evento.tema}}</td>
       <td>{{evento.local}}</td>
-      <td>{{evento.data | DateTimeFormat}}</td>
+      <td>{{evento.data}}</td>
       <td>{{evento.qtdPessoas}}</td>
       <td>
         <div *ngIf="!evento.lotes.length">
@@ -67,7 +67,7 @@
       </td>
     </tr>
   </tbody>
-  <tfoot *ngIf="!eventos.length">
+  <tfoot *ngIf="!eventos">
     <tr>
       <td colspan="8" class="text-center">
         <h4>
@@ -129,6 +129,8 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
     <label>Data e Hora</label>
     <input type="text" class="form-control"
     bsDatepicker
+    value="{{data | DateTimeFormat}}"
+    [(ngModel)]="data"
     [bsConfig]="{ dateInputFormat : 'DD/MM/YYYY hh:mm' }"
     [ngClass]="{'is-invalid': registerForm.get('data').errors 
     && registerForm.get('data').touched}"
