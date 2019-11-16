@@ -20,6 +20,9 @@ using Microsoft.Extensions.Options;
 using ProAgil.Domain.Identity;
 using ProAgil.Repository;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace ProAgil.WebAPI
 {
@@ -53,6 +56,19 @@ namespace ProAgil.WebAPI
             builder.AddRoleValidator<RoleValidator<Role>>();
             builder.AddRoleManager<RoleManager<Role>>();
             builder.AddSignInManager<SignInManager<User>>();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options => {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII
+                            .GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
+                        ValidateIssuer = false,
+                        ValidateAudience =false
+                    };
+                }
+            );
 
             services.AddMvc(options => {
                 var policy = new AuthorizationPolicyBuilder()
