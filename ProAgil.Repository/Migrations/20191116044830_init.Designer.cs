@@ -9,7 +9,7 @@ using ProAgil.Repository;
 namespace ProAgil.Repository.Migrations
 {
     [DbContext(typeof(ProAgilContext))]
-    [Migration("20191116020015_init")]
+    [Migration("20191116044830_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -148,7 +148,7 @@ namespace ProAgil.Repository.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<string>("FulName")
+                    b.Property<string>("FullName")
                         .HasColumnType("nvarchar(150)");
 
                     b.Property<bool>("LockoutEnabled");

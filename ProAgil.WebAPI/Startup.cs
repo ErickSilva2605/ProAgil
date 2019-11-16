@@ -98,6 +98,8 @@ namespace ProAgil.WebAPI
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
+
             //app.UseHttpsRedirection();
 
             // Adiciona permiçao para requisiçao cruzada (Access-Control-Allow-Origin)

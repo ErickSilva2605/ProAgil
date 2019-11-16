@@ -146,7 +146,7 @@ namespace ProAgil.Repository.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<string>("FulName")
+                    b.Property<string>("FullName")
                         .HasColumnType("nvarchar(150)");
 
                     b.Property<bool>("LockoutEnabled");

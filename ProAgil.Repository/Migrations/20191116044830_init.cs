@@ -42,7 +42,7 @@ namespace ProAgil.Repository.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    FulName = table.Column<string>(type: "nvarchar(150)", nullable: true)
+                    FullName = table.Column<string>(type: "nvarchar(150)", nullable: true)
                 },
                 constraints: table =>
                 {
