@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { PalestrantesComponent } from './palestrantes/palestrantes.component';
 import { ContatosComponent } from './contatos/contatos.component';
+import { AuthGuard } from './auth/auth.guard';
 
 
 const routes: Routes = [
@@ -16,10 +17,10 @@ const routes: Routes = [
       {path: 'registration', component: RegistrationComponent},
     ]
   },
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'eventos', component: EventosComponent},
-  {path: 'palestrantes', component: PalestrantesComponent},
-  {path: 'contatos', component: ContatosComponent},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  {path: 'eventos', component: EventosComponent, canActivate: [AuthGuard]},
+  {path: 'palestrantes', component: PalestrantesComponent, canActivate: [AuthGuard]},
+  {path: 'contatos', component: ContatosComponent, canActivate: [AuthGuard]},
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   {path: '**', redirectTo: 'dashboard', pathMatch: 'full'}
 ];
