@@ -10,6 +10,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { EventoService } from './_services/evento.service';
 
 import { AppComponent } from './app.component';
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegistrationComponent } from './user/registration/registration.component';
 import { NavComponent } from './nav/nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventosComponent } from './eventos/eventos.component';
@@ -19,9 +22,13 @@ import {TituloComponent } from './_shared/titulo/titulo.component';
 
 import { DateTimeFormatPipe } from './_helps/DateTimeFormat.pipe';
 
+
 @NgModule({
    declarations: [
       AppComponent,
+      UserComponent,
+      LoginComponent,
+      RegistrationComponent,
       NavComponent,
       DashboardComponent,
       EventosComponent,
