@@ -3,9 +3,12 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule, TooltipModule, ModalModule, BsDatepickerModule } from 'ngx-bootstrap';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxMaskModule } from 'ngx-mask';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 import { EventoService } from './_services/evento.service';
 
@@ -16,12 +19,14 @@ import { RegistrationComponent } from './user/registration/registration.componen
 import { NavComponent } from './nav/nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventosComponent } from './eventos/eventos.component';
+import { EventoEditComponent } from './eventos/eventoEdit/eventoEdit.component';
 import { PalestrantesComponent } from './palestrantes/palestrantes.component';
 import { ContatosComponent } from './contatos/contatos.component';
-import {TituloComponent } from './_shared/titulo/titulo.component';
+import { TituloComponent } from './_shared/titulo/titulo.component';
 
 import { DateTimeFormatPipe } from './_helps/DateTimeFormat.pipe';
 import { AuthInterceptor } from './auth/auth.interceptor';
+
 
 
 @NgModule({
@@ -33,6 +38,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
       NavComponent,
       DashboardComponent,
       EventosComponent,
+      EventoEditComponent,
       PalestrantesComponent,
       ContatosComponent,
       TituloComponent,
@@ -44,6 +50,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
       BsDatepickerModule.forRoot(),
       TooltipModule.forRoot(),
       ModalModule.forRoot(),
+      TabsModule.forRoot(),
+      NgxMaskModule.forRoot(),
+      NgxCurrencyModule,
       ToastrModule.forRoot({
          timeOut: 10000,
          positionClass: 'toast-bottom-right',

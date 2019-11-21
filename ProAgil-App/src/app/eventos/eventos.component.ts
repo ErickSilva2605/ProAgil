@@ -177,6 +177,7 @@ export class EventosComponent implements OnInit {
   }
 
   getEventos() {
+    this.dataAtual = new Date().getMilliseconds().toString();
     this.eventoService.getAllEventos().subscribe(
       (evento: Evento[]) => {
       this.eventos = evento;
