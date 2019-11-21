@@ -138,8 +138,10 @@ namespace ProAgil.WebAPI.Controllers
                 var idLotes = new List<int>();
                 var idRedesSociais = new List<int>();
 
-                model.Lotes.ForEach(item => idLotes.Add(item.Id));
-                model.RedeSociais.ForEach(item => idRedesSociais.Add(item.Id));
+                if(model.Lotes != null)
+                    model.Lotes.ForEach(item => idLotes.Add(item.Id));
+                if(model.RedeSociais != null)
+                    model.RedeSociais.ForEach(item => idRedesSociais.Add(item.Id));
 
                 var lotes = evento.Lotes.Where(lote => !idLotes.Contains(lote.Id)).ToArray();
                 var redesSociais = evento.RedeSociais.Where(redeSocial => !idRedesSociais.Contains(redeSocial.Id)).ToArray();
